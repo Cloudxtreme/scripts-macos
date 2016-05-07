@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ "$1" = "" ]; then
+  exit 1
+fi
+
+DIR=`dirname "$1"`
+BASE=`basename "$1"`
+
+if [ "$2" != "" ]; then
+  OUT="$2/$BASE.7z"
+else
+  OUT="./$BASE.7z"
+fi
+
+pushd "$DIR"
+7za a -t7z -mx9 -y -x!"__MACOSX" -x!".DS_Store" -x!"._*" -x!".git" -x!".hg" -x!".svn" "$OUT" "./$BASE"
+popd

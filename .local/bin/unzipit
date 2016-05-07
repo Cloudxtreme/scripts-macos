@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ "$1" = "" ]; then
+  exit 1
+fi
+
+FILE=$(basename "$1")
+FNAME="${FILE%.*}"
+FEXT="${FILE##*.}"
+
+if [ "$2" != "" ]; then
+  OUT="$2/$FNAME"
+else
+  OUT="`dirname "$1"`/$FNAME"
+fi
+
+mkdir -p "$OUT"
+[ $? -ne 0 ] && exit $?
+
+pushd "$OUT"
+unzip "$1"
+popd

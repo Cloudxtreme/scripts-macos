@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ "$1" = "" ]; then
+  exit 1
+fi
+
+DIR=`dirname "$1"`
+BASE=`basename "$1"`
+
+if [ "$2" != "" ]; then
+  OUT="$2/$BASE.rar"
+else
+  OUT="$DIR/$BASE.rar"
+fi
+
+rar -ep1 a -x"__MACOSX" -x".DS_Store" -x"._*" -x".git" -x".hg" -x".svn" "$OUT" "$1"

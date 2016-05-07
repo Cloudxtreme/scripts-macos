@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Purge various garbage MacOS is littered with
+function dormjunk() {
+  find "$1" -type f -name "__MACOSX" -delete\
+  -or -type f -name ".DS_Store" -delete\
+  -or -type f -name "._*" -delete
+}
+
+# Remove from the current directory
+if [ $# -eq 0 ]; then
+  dormjunk .
+  exit
+fi
+
+# Remove from all specified directories
+for DIR in "$@"
+do
+  dormjunk "$DIR"
+done

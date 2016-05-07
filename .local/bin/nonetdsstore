@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Turn off .DS_Store junk for network shares
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true

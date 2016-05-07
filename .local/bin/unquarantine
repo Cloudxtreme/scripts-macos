@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Remove quarantine attribute from downloaded files
+xattr -dr com.apple.quarantine $@

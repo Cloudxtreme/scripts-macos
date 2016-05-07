@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# GTK recent documents
+rm -f $HOME/.local/share/recently-used.xbel
+
+# Thumbnails
+find $HOME/.thumbnails -type f -mtime +7 -delete

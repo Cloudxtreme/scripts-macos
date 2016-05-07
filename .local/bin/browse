@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Browse the specified folder in Finder,
+# or open the specified item
+
+ITEM="$1"
+
+if [ "$ITEM" == "" ]; then
+  ITEM="$PWD"
+fi
+
+open "$ITEM"

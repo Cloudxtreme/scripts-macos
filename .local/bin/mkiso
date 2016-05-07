@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Package folder into ISO image
+
+if [ $# -ne 2 ]; then
+  echo "Usage: mkiso <iso> <folder>"
+  exit 1
+fi
+
+hdiutil makehybrid -o "$1" "$2" -iso -joliet
