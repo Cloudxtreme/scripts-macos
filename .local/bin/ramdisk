@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Create RAM disk (Volume with its contents stored entirely in RAM)
+
+NAME="RAM"
+
+if [ "$1" = "" ]; then
+  echo "Usage: $0 <size in MB> | detach"
+  exit 1
+fi
+
+if [ "$1" != "detach" ]; then
+  SIZE=$(($1 * 2048))
+  diskutil erasevolume HFS+ "$NAME" `hdiutil attach -nomount ram://$SIZE`
+else
+  if [ ! -d "/Volumes/$NAME" ]; then
+    echo "RAM disk /Volumes/$NAME not found."
+    exit 1
+  fi
+
+  DISK=`mount | grep "/Volumes/$NAME" | awk '{print $1}'`
+  umount -f "/Volumes/$NAME"
+  hdiutil detach $DISK
+fi
