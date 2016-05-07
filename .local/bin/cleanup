@@ -1,7 +1,24 @@
 #!/bin/sh
 
+# Bash
+rm -f $HOME/.bash_history
+
 # GTK recent documents
 rm -f $HOME/.local/share/recently-used.xbel
+
+# Less
+rm -f $HOME/.lesshst
+
+# mc
+rm -f $HOME/.config/mc/hotlist
+
+rm -f $HOME/.cache/mc/Tree
+rm -f $HOME/.cache/mc/mcedit/*
+
+rm -f $HOME/.local/share/mc/history
+rm -f $HOME/.local/share/mc/filepos
+
+rm -f $HOME/.local/share/mc/mcedit/*
 
 # Thumbnails
 find $HOME/.thumbnails -type f -mtime +7 -delete
